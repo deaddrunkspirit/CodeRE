@@ -1,0 +1,50 @@
+<!DOCTYPE html5 >
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>Code.RE</title>
+  </head>
+  <body class="main_body">
+      <div id="grid">
+        <div class="header" id="header_grid">
+            <h1 class="logo">Code.RE</h1>
+            <h1 class="about_info">About</h1>
+            <h1 class="how_to_use">How to use</h1>
+            <h1 class="contacts">Contacts</h1>
+        </div>
+        <div class="code_wrapper" id="wrapper">
+          <textarea class="code_editor" id="editor" rows="20">class Simple {
+    public static void main(String args[]) {
+        System.out.println("Hello Java");
+    }  
+}  
+        </textarea>
+        </div>
+        <div class="footer" id="footer_grid">
+            <select class="language_type_selector">
+                <option>Java</option>
+                <option>Python</option>
+                <option>Kotlin</option>
+                <option>HTML</option>
+                <option>CSS</option>
+                <option>XML</option>
+                <option>JavaScript</option>
+                <option>C#</option>
+                <option>Json</option>
+            </select>
+            <button class="theme_button">Dark</button>
+            <div class="buttons" id="buttons_grid"> 
+              <button class="link_type_button">Short Link</button>
+              <div class="copy_grid" id="copy">
+                <label class="copy_word">COPY:</label>
+                <div>
+                  <button class="code_copy_button">CODE</button>
+                  <button class="url_copy_button">LINK</button>
+                </div>  
+              </div>
+            </div>
+        </div>
+      </div>
+  </body>
+</html>
