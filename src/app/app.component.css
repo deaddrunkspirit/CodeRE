@@ -1,0 +1,45 @@
+app-header {
+  display: flex;
+}
+
+app-code-block {
+
+}
+
+
+app-footer {
+  display: flex;
+  align-items: end;
+  flex-direction: row;
+  background-color: rgb(65, 65, 65);
+  justify-content: space-between;
+}
+
+/*#wrapper {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
+#buttons-grid {
+  display: block;
+  align-items: baseline;
+  flex-direction: row;
+  /*font-size: 75%;*/
+  /*margin-right: 30px;*/
+  justify-content: space-between;
+}
+
+#copy-buttons-grid {
+  display: block;
+  align-items: baseline;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/*#editor {*/
+/*  font-size: 150%;*/
+/*  background-color: rgb(65, 65, 65);*/
+/*  height: 100%;*/
+/*  width: 100%;*/
+/*  resize: none;*/
+/*  color: #fd8616;*/
+/*}*/

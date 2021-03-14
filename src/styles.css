@@ -1,136 +1,143 @@
-#grid {
-    display: grid;
-    grid-template-rows: 60px 570px 60px;
-    grid-gap: 5px;
-}
-#grid > div {
-}
-#header_grid {
-    display: flex;
-    font-size: 75%;
-    font-style: italic;
-    font-family: Arial, Helvetica, sans-serif;
-    justify-content: space-around;
-}
-#header_grid > h1 {
-}
-#footer_grid {
-    display: flex;
-    font-size: 22px;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: Arial, Helvetica, sans-serif;
-}
-#footer_grid > button {
-    margin-top: 5px;
-}
-#footer_grid > select {
-    margin-top: 5px;
-}
-#footer_grid > label {
-    margin-top: 5px;
+@import '~codemirror/lib/codemirror.css';
+@import '~codemirror/theme/darcula.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+#wrapper {
+  display: grid;
+  grid-template-rows: 60px 580px 60px;
+  grid-gap: 1px;
 }
 
-#copy {
-    display: flex;
-    align-items: baseline;
-    flex-direction: row;
-    justify-content: space-around;
+/* Actually CodeMirror has a hardcoded height parameter of 300px
+   so we setting a custom parameter*/
+.CodeMirror {
+  height: 79vh;
 }
+/*#grid {*/
+/*    display: grid;*/
+/*    grid-template-rows: 60px 570px 60px;*/
+/*    grid-gap: 5px;*/
+/*}*/
+/*#grid > div {*/
+/*}*/
+/*#header_grid {*/
+/*    display: flex;*/
+/*    font-size: 75%;*/
+/*    font-style: italic;*/
+/*    font-family: Arial, Helvetica, sans-serif;*/
+/*    justify-content: space-around;*/
+/*}*/
+/*#header_grid > h1 {*/
+/*}*/
+/*#footer_grid {*/
+/*    display: flex;*/
+/*    font-size: 22px;*/
+/*    justify-content: space-between;*/
+/*    align-items: baseline;*/
+/*    font-family: Arial, Helvetica, sans-serif;*/
+/*}*/
+/*#footer_grid > button {*/
+/*    margin-top: 5px;*/
+/*}*/
+/*#footer_grid > select {*/
+/*    margin-top: 5px;*/
+/*}*/
+/*#footer_grid > label {*/
+/*    margin-top: 5px;*/
+/*}*/
 
-#buttons_grid {
-    display: flex;
-    align-items: baseline;
-    flex-direction: row;
-    font-size: 75%;
-    margin-right: 30px;
-    justify-content: space-between;
-}
-.header {
-    background-color: rgb(65, 65, 65);
-}
-.footer {
-    background-color: rgb(65, 65, 65);
-}
-.codeblock {
-    background-color: rgb(65, 65, 65);
-}
-.main_body {
-    background-color: black;
-}
+/*#copy {*/
+/*    display: flex;*/
+/*    align-items: baseline;*/
+/*    flex-direction: row;*/
+/*    justify-content: space-around;*/
+/*}*/
+
+/*#buttons_grid {*/
+/*    display: flex;*/
+/*    align-items: baseline;*/
+/*    flex-direction: row;*/
+/*    font-size: 75%;*/
+/*    margin-right: 30px;*/
+/*    justify-content: space-between;*/
+/*}*/
+/*.header {*/
+/*    background-color: rgb(65, 65, 65);*/
+/*}*/
+/*.footer {*/
+/*    background-color: rgb(65, 65, 65);*/
+/*}*/
+/*.codeblock {*/
+/*    background-color: rgb(65, 65, 65);*/
+/*}*/
+/*.main_body {*/
+/*    background-color: black;*/
+/*}*/
 /*
  * Header elements section
  */
-.about_info {
-    color: #fd8616;
-}
-.how_to_use {
-    color: #fd8616;
-}
-.contacts {
-    color: #fd8616;   
-}
-.logo {
-    font-weight: bolder;
-    color: #fd8616;
-}
+/*.about_info {*/
+/*    color: #fd8616;*/
+/*}*/
+/*.how_to_use {*/
+/*    color: #fd8616;*/
+/*}*/
+/*.contacts {*/
+/*    color: #fd8616;*/
+/*}*/
+/*.logo {*/
+/*    font-weight: bolder;*/
+/*    color: #fd8616;*/
+/*}*/
 
 /*
  * Footer elements section
  */
-.language_type_selector {
-    background-color: rgb(65, 65, 65);
-    color: #fd8616;
-    width: 120px;
-    height: 50px;
-    margin-left: 50px;
-}
-.theme_button {
-    background-color: rgb(65, 65, 65);
-    color: grey;
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
-    margin-left: 300px;
-}
-.link_type_button {
-    background-color: #fd8616;
-    width: 150px;
-    height: 50px;
-    border-radius: 15%;
-    margin-right: 30px;
-}
-.copy_word {
-    background-color: rgb(65, 65, 65);
-    color: #fd8616;
-    height: 30px;
-    width: 75px;
-    margin-top: 10px;
-}
-.code_copy_button {
-    background-color: #fd8616;
-    width: 75px;
-    height: 50px;
-    border-radius: 15%;
-}
-.url_copy_button {
-    background-color: #fd8616;
-    width: 75px;
-    height: 50px;
-    border-radius: 15%;
-}
+/*.language_type_selector {*/
+/*    background-color: rgb(65, 65, 65);*/
+/*    color: #fd8616;*/
+/*    width: 120px;*/
+/*    height: 50px;*/
+/*    margin-left: 50px;*/
+/*}*/
+/*.theme_button {*/
+/*    background-color: rgb(65, 65, 65);*/
+/*    color: grey;*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    border-radius: 100%;*/
+/*    margin-left: 300px;*/
+/*}*/
+/*.link_type_button {*/
+/*    background-color: #fd8616;*/
+/*    width: 150px;*/
+/*    height: 50px;*/
+/*    border-radius: 15%;*/
+/*    margin-right: 30px;*/
+/*}*/
+/*.copy_word {*/
+/*    background-color: rgb(65, 65, 65);*/
+/*    color: #fd8616;*/
+/*    height: 30px;*/
+/*    width: 75px;*/
+/*    margin-top: 10px;*/
+/*}*/
+/*.code_copy_button {*/
+/*    background-color: #fd8616;*/
+/*    width: 75px;*/
+/*    height: 50px;*/
+/*    border-radius: 15%;*/
+/*}*/
+/*.url_copy_button {*/
+/*    background-color: #fd8616;*/
+/*    width: 75px;*/
+/*    height: 50px;*/
+/*    border-radius: 15%;*/
+/*}*/
 /*
  * Code block elements section
  */
- #wrapper {
-     display: flexbox;
- }
- #editor {
-     font-size: 150%;
-     background-color: rgb(65, 65, 65);
-     height: 100%;
-     width: 100%;
-     resize: none;
-     color: #fd8616;
- }
- 
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
