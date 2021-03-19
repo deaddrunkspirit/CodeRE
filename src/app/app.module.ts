@@ -56,7 +56,7 @@ import { SnippetComponent } from './snippet/snippet.component';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [CodeBlockService, HttpService],
-  bootstrap: [AppComponent, CodeBlockComponent]
+  providers: [HttpService],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

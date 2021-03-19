@@ -1,0 +1,14 @@
+<div class="code-area-wrapper">
+  <ngx-codemirror
+    style="height: 50%; width: 100%;"
+    [(ngModel)]="text"
+    (ngModelChange)="onTextChange()"
+    [options]="{
+    lineNumbers: true,
+    theme: 'darcula',
+    mode: 'markdown',
+    autofocus: true,
+    lineWrapping: true
+  }"></ngx-codemirror>
+</div>
+

@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, enableProdMode, OnInit} from '@angular/core';
 import { Constants } from './common/constants';
 import { Router } from '@angular/router';
+import {HttpService} from './http.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,10 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = Constants.TITLE;
 
-  constructor(private router: Router) {
+  constructor() {
   }
 
   ngOnInit(): void {
-
+    // enableProdMode();
   }
-  // Если поле пустое и нет ссылки на этот сниппет
 }

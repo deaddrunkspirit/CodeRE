@@ -4,14 +4,16 @@
 
 #wrapper {
   display: grid;
-  grid-template-rows: 60px 580px 60px;
-  grid-gap: 1px;
+  grid-template-rows: 10vh 80vh 10vh;
+  height: 100vh;
+  width: 100vw;
+  /*background-color: rgb(65, 65, 65);*/
 }
 
 /* Actually CodeMirror has a hardcoded height parameter of 300px
    so we setting a custom parameter*/
 .CodeMirror {
-  height: 79vh;
+  height: 80vh;
 }
 /*#grid {*/
 /*    display: grid;*/
