@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-copy-code',
@@ -7,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CopyCodeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private clipboard: Clipboard) { }
 
   ngOnInit(): void {
   }
 
   onClick() {
-
+    this.clipboard.copy(sessionStorage.getItem('code'))
   }
 }

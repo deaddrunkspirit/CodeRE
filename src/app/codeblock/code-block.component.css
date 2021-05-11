@@ -1,37 +1,3 @@
-
-/*#editor {*/
-/*  display: inline-block;*/
-/*  margin: 0px;*/
-/*  font-size: 150%;*/
-/*  background-color: rgb(65, 65, 65);*/
-/*  !*height: 100%;*!*/
-/*  !*width: 100%;*!*/
-/*  !*resize: none;*!*/
-/*  color: #fd8616;*/
-
-/*}*/
-
-/*.line-numbering {*/
-/*  !*font-size: 150%;*!*/
-/*  display: inline-block;*/
-/*  color: #fd8616;*/
-/*  background-color: rgb(65, 65, 65);*/
-
-/*  font-family: fixed-width;*/
-/*  margin: 0px;*/
-/*}*/
-
-/*.code-block-wrapper {*/
-/*  display: inline-block;*/
-/*  margin: 0px;*/
-/*  font-size: 150%;*/
-/*  background-color: rgb(65, 65, 65);*/
-/*  height: 100%;*/
-/*  width: 100%;*/
-/*  resize: none;*/
-/*  color: #fd8616;*/
-/*}*/
-
 .code-area-wrapper {
   display: flex;
   height: 100%;

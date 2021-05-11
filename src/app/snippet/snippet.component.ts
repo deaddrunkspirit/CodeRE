@@ -13,20 +13,25 @@ export class SnippetComponent implements OnInit {
 
   constructor(private http: HttpService, private router: Router) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     let url: string = this.router.url;
     console.log('url: ' + url);
-    console.log('url match pattern: ' + Constants.SHORT_PATTERN.test(url))
+    console.log('url match pattern: ' + Constants.SHORT_PATTERN.test(url));
     let url_data = url.split('/');
     let link = url_data[url_data.length - 1];
     if (Constants.LONG_PATTERN.test(url) || Constants.SHORT_PATTERN.test(url)) {
       // TODO Initialize code snippet e.g. GET with url
-      console.log('get snippet')
-      this.http.getSnippet(link);
+      console.log('init get snippet');
+      await this.http.getSnippet(link);
+      console.log('init get complete')
     }
     else {
-      console.log('post snippet');
-      //this.http.postSnippet(new SnippetModel('ini', 'Bash', '***'));
+      console.log('init post snippet');
+      sessionStorage.setItem('code', '');
+      sessionStorage.setItem('syntax', 'Bash');
+      sessionStorage.setItem('link_mode', 'short');
+      await this.http.postSnippet();//new SnippetModel('', 'Bash', '***'));
+      console.log('init post complete')
     }
   }
 

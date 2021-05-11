@@ -1,26 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Constants } from '../../common/constants';
-import { HttpClient } from '@angular/common/http';
-import {SnippetModel} from '../../models/snippet.model';
-import {Snippet} from '../../models/snippet';
+import {HttpService} from '../../http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LinkTypeService {
-  static linkType: string = 'Short'
+  linkType: string = 'short';
+  isLong: boolean = false;
 
-  constructor() { }
+  constructor(private http: HttpService) { }
 
-  setLinkType(): void {
-    LinkTypeService.linkType = LinkTypeService.linkType === 'Short' ? 'Long' : 'Short';
-  }
-
-  changeLink(): void {
-
+  async reverseLinkType() {
+    this.linkType = this.linkType === 'short' ? 'long' : 'short';
+    this.isLong = !this.isLong;
+    sessionStorage.setItem('link_mode', this.linkType)
+    await this.http.updateLinkMode();
   }
 
   getLinkType(): string {
-    return LinkTypeService.linkType;
+    return this.linkType;
+  }
+
+  getIsLong(): boolean {
+    return this.isLong;
+  }
+
+  setLinkType(): void {
+    this.linkType = sessionStorage.getItem('link_mode');
+    this.isLong = this.linkType === 'long';
   }
 }

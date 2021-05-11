@@ -1,27 +1,44 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {HttpService} from '../http.service';
 import {SnippetModel} from '../models/snippet.model';
 import {Constants} from '../common/constants';
+import {MarkupService} from '../markup.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CodeBlockService {
   text: string;
-  constructor(private http: HttpService) {
+  private mode: string;
+
+  constructor(private http: HttpService, private markup: MarkupService) {
   }
 
-  async setText(newText: string): Promise<void> {
+  async updateText(newText: string): Promise<void> {
     this.text = newText;
-    return await this.http.updateSnippet(Constants.TOKEN, newText, null)
+    sessionStorage.setItem('code', this.text);
+    return await this.http.updateSnippet();
   }
 
-  getText(): string {
-    return this.text
+  setText(newText: string) {
+    this.text = newText;
   }
 
-  async updateCode(): Promise<any> {
-    this.text = this.http.snippet.code;
-    console.log('code: ' + this.text);
+  updateMode() {
+    return new Promise((resolve, reject) => {
+        let newMode = sessionStorage.getItem('syntax');
+        if (newMode === this.mode) {
+          reject(newMode);
+        }
+        this.markup.setMarkup(newMode);
+        this.mode = sessionStorage.getItem('markup')
+        resolve(newMode);
+      }).then(res => {
+        console.log(res);
+    }).catch((e: any) => console.log(e));
+  }
+
+  getMode(): string {
+    return this.mode;
   }
 }

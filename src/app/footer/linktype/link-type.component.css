@@ -1,0 +1,16 @@
+.link_type-wrapper {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 80px 50px 50px;
+  align-content: space-around
+}
+
+span {
+  padding: 5px;
+  color: #b0bec5;
+}
+
+mat-slide-toggle {
+  padding: 5px;
+  color: #b0bec5;
+}

@@ -1,43 +1,33 @@
-app-header {
-  display: flex;
-}
+/*app-header {*/
+/*  display: flex;*/
+/*  font-size: 75%;*/
+/*  font-style: italic;*/
+/*  font-family: Arial, Helvetica, sans-serif;*/
+/*  justify-content: space-around;*/
+/*  align-items: center;*/
+/*  color: #673ab7;*/
+/*  background-color: #606366;*/
+/*}*/
 
-app-code-block {
+/*app-footer {*/
+/*  display: flex;*/
+/*  align-items: end;*/
+/*  flex-direction: row;*/
+/*  background-color: #606366;*/
+/*  justify-content: space-between;*/
+/*}*/
 
-}
+/*#buttons-grid {*/
+/*  display: block;*/
+/*  align-items: baseline;*/
+/*  flex-direction: row;*/
+/*  justify-content: space-between;*/
+/*}*/
 
-app-header {
-  display: flex;
-  font-size: 75%;
-  font-style: italic;
-  font-family: Arial, Helvetica, sans-serif;
-  justify-content: space-around;
-  align-items: center;
-  color: #fd8616;
-  background-color: rgb(65, 65, 65);
-}
-
-app-footer {
-  display: flex;
-  align-items: end;
-  flex-direction: row;
-  background-color: rgb(65, 65, 65);
-  justify-content: space-between;
-}
-
-#buttons-grid {
-  display: block;
-  align-items: baseline;
-  flex-direction: row;
-  /*font-size: 75%;*/
-  /*margin-right: 30px;*/
-  justify-content: space-between;
-}
-
-#copy-buttons-grid {
-  display: block;
-  align-items: baseline;
-  flex-direction: row;
-  justify-content: space-around;
-}
+/*#copy-buttons-grid {*/
+/*  display: block;*/
+/*  align-items: baseline;*/
+/*  flex-direction: row;*/
+/*  justify-content: space-around;*/
+/*}*/
 

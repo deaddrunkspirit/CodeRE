@@ -1,18 +1,16 @@
-import { Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { SnippetModel } from './models/snippet.model';
-import { Constants } from './common/constants';
-import { Snippet } from './models/snippet';
-import { Location } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import {Injectable, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {SnippetModel} from './models/snippet.model';
+import {Constants} from './common/constants';
+import {Snippet} from './models/snippet';
+import {Location} from '@angular/common';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpService implements OnInit {
   syntaxList: string[];
-  link: string;
-  token: string;
   loading: boolean;
-  snippet: SnippetModel;
 
   constructor(private http: HttpClient, private location: Location){
     this.syntaxList = [];
@@ -21,45 +19,37 @@ export class HttpService implements OnInit {
   ngOnInit(): void {
   }
 
-  public postSnippet(snippet: SnippetModel): Promise<any> {
-    const promise = new Promise((resolve, reject) => {
+  public postSnippet() {
+    return new Promise((resolve, reject) => {
       const body = {
-        code: snippet.code,
-        syntax: snippet.syntax,
-        link_mode: snippet.link_mode?.toLowerCase()
+        code: sessionStorage.getItem('code'),
+        syntax: sessionStorage.getItem('syntax'),
+        link_mode: sessionStorage.getItem('link_mode')
       };
       const url = Constants.BASE_URL + 'api/snippet';
-      console.log(body)
-      console.log('POST send')
-      this.http.post(url, body)
+      console.log('POST send');
+      console.log('body: ' + JSON.stringify(body));
+      this.http.post<SnippetModel>(url, body)
         .toPromise()
         .then(
-          (res) => {
-            // TODO correct snippet creation
-            let code: string = res['snippet']['code'];
-            let syntax: string = res['snippet']['syntax'];
-            this.link = res['snippet']['link'];
-            let snippet: SnippetModel = new SnippetModel(code, syntax, this.link);
-            Constants.TOKEN = res['token'];
-            Constants.SNIPPET = snippet;
-            this.location.go(this.link);
+          (res: any) => {
+            this.location.go(res.snippet.link);
+            sessionStorage.setItem('link', res.snippet.link);
+            localStorage.setItem('token', res.token);
             resolve(res);
           },
           err => {
             reject(err);
           });
     });
-    console.log('POST snippet succeed')
-    return promise;
   }
 
-  public updateSnippet(token: string, text: string, syntax: string): Promise<any> {
-    syntax = syntax !== null ? syntax.toLowerCase() : null;
-    const promise = new Promise((resolve, reject) => {
+  public updateSnippet(): Promise<any> {
+    return new Promise((resolve, reject) => {
       const body = {
-        code: text,
-        syntax: syntax,
-        token: token,
+        code: sessionStorage.getItem('code'),
+        syntax: sessionStorage.getItem('syntax'),
+        token: localStorage.getItem('token'),
       };
       console.log(body);
       const url = Constants.BASE_URL + 'api/snippet';
@@ -67,49 +57,66 @@ export class HttpService implements OnInit {
         .patch(url, body, {responseType: 'text'})
         .toPromise()
         .then(
-          (res) => {
+          (res: any) => {
+            console.log("PATCH snippet succeed");
             resolve(res);
           },
           err => {
             reject(err);
           });
     });
-    console.log("PATCH snippet succeed");
-    return promise;
   }
 
-  public updateLinkMode(link: string, link_mode: string): Promise<any> {
-    let promise = new Promise((resolve, reject) => {
-      const url = Constants.BASE_URL + link + '/' + link_mode.toLowerCase();
-      //TODO actual request
-    })
-    console.log('PATCH snippet link mode succeed')
-    return promise;
-  }
-
-  public getSnippet(link: string): Promise<any> {
-    const promise = new Promise((resolve, reject) => {
-      const url = Constants.BASE_URL + 'api/snippet/' + link;
+  public updateLinkMode(): Promise<any> {
+    let link = sessionStorage.getItem('link');
+    return new Promise((resolve, reject) => {
+      const url = Constants.BASE_URL + 'api/snippet/' + link + '/chmod';
+      console.log('url link mode: ' + url);
+      let body = {
+        'token': localStorage.getItem('token')
+      };
       this.http
-        .get<Snippet>(url)
+        .patch(url, body, {responseType: 'text'})
         .toPromise()
         .then(
-          (res: Snippet) => {
-            console.log(res)
-            this.snippet =  new SnippetModel(res.code, res.syntax, link);//new SnippetModel(res.code, res.syntax, link);
+          (res: any) => {
+            sessionStorage.setItem('link', res)
+            sessionStorage.setItem('link_mode', res.length == 3 ? 'short' : 'long');
+            this.location.go(res);
+            console.log('PATCH link mode complete');
             resolve(res);
           },
           err => {
             reject(err);
           }
-        ); // Handle 404 error
+        )
     });
-    console.log('GET snippet succeed');
-    return promise;
+  }
+
+  public getSnippet(link: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const url = Constants.BASE_URL + 'api/snippet/' + link;
+      this.http
+        .get<Snippet>(url)
+        .toPromise()
+        .then(
+          (res: any) => {
+            console.log(JSON.stringify(res));
+            sessionStorage.setItem('code', res.code);
+            sessionStorage.setItem('syntax', res.syntax);
+            sessionStorage.setItem('link', link);
+            sessionStorage.setItem('link_mode', link.length == 3 ? 'short' : 'long')
+            resolve(res);
+          },
+          err => {
+            reject(err);
+          }
+        );
+    });
   }
 
   public getAvailableLanguages(): Promise<any> {
-    let promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const url = Constants.BASE_URL + 'api/syntaxes';
       console.log(url)
       this.http
@@ -120,13 +127,12 @@ export class HttpService implements OnInit {
             console.log(res)
             this.syntaxList = res;
             resolve(res);
+            console.log('GET syntaxes succeed');
           },
           err => {
             reject(err);
           });
     });
-    console.log('GET syntaxes succeed');
-    return promise;
   }
 }
 

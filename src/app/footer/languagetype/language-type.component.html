@@ -1,12 +1,14 @@
 <div style="margin-left: 50px" *ngIf="loading | async ">
-  <mat-form-field>
-    <mat-select [disableOptionCentering] = true
-                class="selection"
-                [(ngModel)]="language"
-                (ngModelChange)="onChange()">
+  <mat-form-field color="primary">
+    <mat-select
+      style="color: #b0bec5"
+      id="languageType"
+      [disableOptionCentering] = true
+      class="selection"
+      [(ngModel)]="language"
+      (ngModelChange)="onChange()">
       <mat-option *ngFor=" let option of getLanguages();"
                   [value]="option">
-<!--        <ngx-mat-select-search>{{ option }}</ngx-mat-select-search>-->
         {{option}}
       </mat-option>
     </mat-select>

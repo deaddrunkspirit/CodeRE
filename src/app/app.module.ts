@@ -19,13 +19,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CodeBlockComponent } from './codeblock/code-block.component';
 import { LanguageTypeComponent } from './footer/languagetype/language-type.component';
-import { ThemeComponent } from './footer/theme/theme.component';
 import { LinkTypeComponent } from './footer/linktype/link-type.component';
 import { CopyLinkComponent } from './footer/copylinkbutton/copy-link.component';
 import { CopyCodeComponent } from './footer/copycodebutton/copy-code.component';
 import { CodeBlockService } from './codeblock/code-block.service';
 import { HttpService } from './http.service';
 import { SnippetComponent } from './snippet/snippet.component';
+import {CdkCopyToClipboard, ClipboardModule} from '@angular/cdk/clipboard';
+import {MarkupService} from './markup.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,6 @@ import { SnippetComponent } from './snippet/snippet.component';
     FooterComponent,
     CodeBlockComponent,
     LanguageTypeComponent,
-    ThemeComponent,
     LinkTypeComponent,
     CopyLinkComponent,
     CopyCodeComponent,
@@ -55,8 +55,9 @@ import { SnippetComponent } from './snippet/snippet.component';
     MatInputModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ClipboardModule,
   ],
-  providers: [HttpService],
+  providers: [HttpService, CodeBlockService, MarkupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
