@@ -12,6 +12,6 @@ export class CopyLinkComponent {
   constructor(private clipboard: Clipboard) { }
 
   onClick() {
-    this.clipboard.copy(Constants.URL + sessionStorage.getItem('link'));
+    this.clipboard.copy(Constants.BASE_URL + sessionStorage.getItem('link'));
   }
 }
