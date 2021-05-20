@@ -2,7 +2,7 @@
   <ngx-codemirror
     id="htmlCodemirror"
     [(ngModel)]="text"
-    (focusChange)="onModeChange()"
+    (mousemove)="onModeChange()"
     (ngModelChange)="onTextChange();"
     [options]="config"
     autofocus></ngx-codemirror>

@@ -17,13 +17,11 @@ export class LanguageTypeService {
     return this.languageList;
   }
 
-  async updateLanguage(language: string) {
+  async updateLanguage(language: string): Promise<any> {
     this.language = language;
     console.log('new syntax: ' + language);
     sessionStorage.setItem('syntax', language);
-
     this.markup.setMarkup(language)
-
     await this.http.updateSnippet();
   }
 
@@ -38,7 +36,7 @@ export class LanguageTypeService {
     return promise;
   }
 
-  setLanguage(language: string) {
+  setLanguage(language: string): void {
     this.language = language;
     this.markup.setMarkup(language);
   }

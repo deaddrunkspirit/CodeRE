@@ -20,7 +20,7 @@ export class LinkTypeComponent implements OnInit {
     }, 10)
   }
 
-  onSwitch() {
+  onSwitch(): void {
     this.service.reverseLinkType()
     this.isLong = this.service.getIsLong();
     this.linkType = this.service.getLinkType();

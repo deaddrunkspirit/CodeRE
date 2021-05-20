@@ -25,7 +25,7 @@ import { CopyCodeComponent } from './footer/copycodebutton/copy-code.component';
 import { CodeBlockService } from './codeblock/code-block.service';
 import { HttpService } from './http.service';
 import { SnippetComponent } from './snippet/snippet.component';
-import {CdkCopyToClipboard, ClipboardModule} from '@angular/cdk/clipboard';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import {MarkupService} from './markup.service';
 
 @NgModule({

@@ -30,15 +30,11 @@ import 'codemirror/mode/toml/toml';
 import 'codemirror/mode/vb/vb';
 import 'codemirror/mode/vue/vue';
 import 'codemirror/mode/xml/xml'
-// import 'codemirror/mode/we'; webassembly
 import 'codemirror/mode/yaml/yaml';
 
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
 
-// if (environment.production) {
-  enableProdMode();
-// }
+enableProdMode();
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

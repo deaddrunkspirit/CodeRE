@@ -1,6 +1,5 @@
-import {Component, DoCheck, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CodeBlockService } from './code-block.service';
-import * as CodeMirror from 'codemirror';
 
 @Component({
   selector: 'app-code-block',
@@ -10,9 +9,8 @@ import * as CodeMirror from 'codemirror';
 })
 export class CodeBlockComponent implements OnInit {
   text: string;
-  textLoading: Promise<any>;
-  modeLoading: Promise<any>;
-  @ViewChild("codemirror") codemirror;
+  private textLoading: Promise<any>;
+  private modeLoading: Promise<any>;
   private textTimeout?: number;
   private modeTimeout?: number;
   config = {
@@ -22,6 +20,7 @@ export class CodeBlockComponent implements OnInit {
     autofocus: true,
     lineWrapping: true,
   }
+
   constructor(private service: CodeBlockService) {
   }
 
@@ -32,12 +31,10 @@ export class CodeBlockComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       let newCode: string = sessionStorage.getItem('code');
-      // let newLanguage: string = sessionStorage.getItem('syntax');
       console.log('setup code: ' + newCode);
       this.service.setText(newCode);
       this.text = newCode;
-      // this.onModeChange();
-    }, 1000)
+    }, 200)
   }
 
   /**
@@ -48,15 +45,7 @@ export class CodeBlockComponent implements OnInit {
     window.clearTimeout(this.textTimeout);
     this.textTimeout = window.setTimeout(() => {
       this.textLoading = this.service.updateText(this.text)
-      // this.modeLoading = this.service.updateMode()
-      // this.config.mode = this.service.getMode();
-    }, 1000);
-    // window.clearTimeout(this.modeTimeout);
-    // this.modeTimeout = window.setTimeout(() => {
-    //   this.modeLoading = this.service.updateMode()
-    //   this.config.mode = this.service.getMode();
-    // }, 1000);
-
+    }, 200);
   }
 
   onModeChange(): void {
@@ -64,8 +53,6 @@ export class CodeBlockComponent implements OnInit {
     this.modeTimeout = window.setTimeout(() => {
       this.modeLoading = this.service.updateMode()
       this.config.mode = this.service.getMode();
-    }, 10);
-
+    }, 100);
   }
-
 }

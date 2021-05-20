@@ -1,6 +1,5 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LanguageTypeService} from './language-type.service';
-import * as CodeMirror from 'codemirror';
 
 @Component({
   selector: 'app-language-type',
@@ -10,6 +9,7 @@ import * as CodeMirror from 'codemirror';
 export class LanguageTypeComponent implements OnInit {
   language: string;
   loading: Promise<any>;
+
   constructor(private service: LanguageTypeService) { }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class LanguageTypeComponent implements OnInit {
       console.log('setup syntax: ' + language)
       this.service.setLanguage(language);
       this.language = language;
-    }, 100);
+    }, 200);
   }
 
   async onChange() {

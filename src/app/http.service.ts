@@ -1,4 +1,4 @@
-import {Injectable, OnInit} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {SnippetModel} from './models/snippet.model';
 import {Constants} from './common/constants';
@@ -8,15 +8,11 @@ import {Location} from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService implements OnInit {
+export class HttpService {
   syntaxList: string[];
-  loading: boolean;
 
   constructor(private http: HttpClient, private location: Location){
     this.syntaxList = [];
-  }
-
-  ngOnInit(): void {
   }
 
   public postSnippet() {
