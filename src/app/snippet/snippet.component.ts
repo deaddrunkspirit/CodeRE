@@ -18,7 +18,6 @@ export class SnippetComponent implements OnInit {
     let link = url_data[url_data.length - 1];
     if (Constants.LONG_PATTERN.test(url) || Constants.SHORT_PATTERN.test(url)) {
       await this.http.getSnippet(link);
-      sessionStorage.setItem('editable', 'no');
     }
     else {
       sessionStorage.setItem('code', '');
